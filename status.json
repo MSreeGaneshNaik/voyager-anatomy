@@ -1,7 +1,25 @@
 {
   "checked": "2026-10-28",
-  "source": "NASA Voyager mission status, 15 Oct 2026",
-  "V1": { "state": "operating", "since": null, "lastContact": null, "note": "" },
-  "V2": { "state": "operating", "since": null, "lastContact": null, "note": "" },
+  "source": "NASA Deep Space Network, DSN Now feed",
+  "V1": {
+    "state": "operating",
+    "since": null,
+    "lastContact": null,
+    "note": ""
+  },
+  "V2": {
+    "state": "operating",
+    "since": null,
+    "lastContact": "2026-10-28",
+    "note": "",
+    "dsn": {
+      "at": "2026-10-28T12:27Z",
+      "dish": "DSS-43",
+      "station": "Canberra",
+      "rangeKm": 21600000000,
+      "rtltS": null,
+      "signal": "data"
+    }
+  },
   "instruments": {}
 }
