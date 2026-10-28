@@ -1,0 +1,115 @@
+<div class="page">
+  <header class="head">
+    <div>
+      <p class="eyebrow">Voyager 1 · Voyager 2 · Titan IIIE-Centaur</p>
+      <h1>Voyager Anatomy</h1>
+      <p class="lede" id="lede">The spacecraft that toured Jupiter, Saturn, Uranus and Neptune and are still talking to Earth from interstellar space, drawn part by part. Take it apart, fire the rocket that launched it, and follow both probes from the pad to today on a to-scale map.</p>
+    </div>
+    <div class="titleblock" aria-label="Drawing title block" id="titleblock"></div>
+  </header>
+
+  <div class="stage">
+    <nav class="index" id="menu" aria-label="Parts index"></nav>
+    <section class="fig" id="fig" aria-label="Interactive drawing of the Voyager spacecraft">
+      <canvas id="cv" aria-hidden="true"></canvas>
+      <div class="corner tl">Fig 1</div>
+      <div class="corner tr"><span id="figTitle">Voyager spacecraft</span>
+        <button type="button" class="tog" id="aa" aria-pressed="true">Anti-aliasing <b>On</b></button>
+        <div class="camctl" role="group" aria-label="Camera">
+          <button type="button" class="tog" id="free" aria-pressed="false">Free cam <b>Off</b></button>
+          <div class="dragmode" role="group" aria-label="Left-drag does"><span>Drag</span><button type="button" data-mode="orbit" aria-pressed="true">Orbit</button><button type="button" data-mode="pan" aria-pressed="false">Pan</button></div>
+          <div class="zoomer"><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out">−</button><button type="button" id="zreset" aria-label="Reset view">⟲</button></div>
+        </div></div>
+      <div class="corner hint-top" id="hint">Hover or click a part to read it</div>
+      <div class="jlab" id="jlab" hidden aria-hidden="true"></div>
+      <div class="foot" id="foot">
+        <div class="foot-l">
+          <div class="bl">
+            <button type="button" class="pill" id="ign"><i></i><span>Ignite</span></button>
+            <button type="button" class="pill" id="apart" aria-pressed="false">Take apart</button>
+            <label class="mini-thr" for="thrMini"><span>Throttle</span><input type="range" id="thrMini" min="0" max="100" step="0.5" value="100"><output id="thrMiniOut" for="thrMini">100 %</output></label>
+          </div>
+          <div class="jstep" id="jstep" role="group" aria-label="Step through the journey"><button type="button" class="pill" id="jprev" aria-label="Previous stage">‹ Previous</button><span id="jpos"></span><button type="button" class="pill" id="jnext" aria-label="Next stage">Next ›</button></div>
+        </div>
+        <div class="br" id="readout" aria-live="polite"></div>
+      </div>
+    </section>
+  </div>
+  <p class="caption" id="caption"></p>
+
+  <section class="detail" id="detail" aria-live="polite"></section>
+
+  <section class="console" aria-label="Propulsion controls">
+    <div class="panel">
+      <div class="panel-head"><h2>Propulsion</h2><span class="status" id="engStatus">Safed</span></div>
+      <div class="seg" id="groupSeg" role="group" aria-label="Engine to fire"></div>
+      <div class="cluster-row">
+        <svg id="cluster" viewBox="-60 -60 120 120" role="group" aria-label="Engine layout, seen from below. Click an engine to cut it."></svg>
+        <div class="ctl">
+          <div class="ctl-row">
+            <div class="lab"><label for="thr">Throttle</label><output id="thrOut" for="thr">100 %</output></div>
+            <input type="range" id="thr" min="0" max="100" step="0.5" value="100">
+          </div>
+          <div class="ctl-row">
+            <div class="lab"><label for="alt">Ambient altitude</label><output id="altOut" for="alt">Sea level</output></div>
+            <input type="range" id="alt" min="0" max="100" step="0.5" value="0">
+          </div>
+          <div class="btn-row">
+            <button type="button" class="big-btn off" id="ign2"><i></i><span>Ignite</span></button>
+            <button type="button" class="ghost-btn" id="allOn">All engines on</button>
+          </div>
+        </div>
+      </div>
+      <p class="note" id="engNote"></p>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h2>Live thrust</h2><span class="mono" id="engName" style="font-size:12px;color:var(--ink-2)"></span></div>
+      <div class="meter">
+        <div class="big" id="thrustBig">0<small>lbf</small></div>
+        <div class="sub" id="thrustSub">0 kN</div>
+      </div>
+      <div>
+        <div class="bar" id="twBar"><b></b><em></em></div>
+        <div class="bar-scale" id="twScale"><span>0</span><span id="twMid"></span><span id="twMax"></span></div>
+      </div>
+      <dl class="kv" id="liveKV"></dl>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="nowH">
+    <div class="section-head"><h2 id="nowH">Where they are now</h2><p id="nowP">Live: the trajectory model on this page, worked out twenty times a second.</p></div>
+    <div class="mstatus" id="mstatus" aria-live="polite"></div>
+    <div class="glance" id="now"></div>
+  </section>
+
+  <section class="section" aria-labelledby="glanceH">
+    <div class="section-head"><h2 id="glanceH">Voyager at a glance</h2><p>Figures for the spacecraft that flew as both probes, from the sources at the foot of the sheet.</p></div>
+    <div class="glance" id="glance"></div>
+  </section>
+
+  <section class="section" aria-labelledby="insH">
+    <div class="section-head"><h2 id="insH">The eleven investigations</h2><p>What each instrument measured, and which are still switched on.</p></div>
+    <div class="table-wrap"><table id="insTable"></table></div>
+  </section>
+
+  <section class="section" aria-labelledby="hwH">
+    <div class="section-head"><h2 id="hwH">Hardware</h2><p>Hover any part in Fig 1 and its sheet lights up here.</p></div>
+    <div class="specs" id="specs"></div>
+  </section>
+
+  <section class="section" aria-labelledby="engH">
+    <div class="section-head"><h2 id="engH">Engines</h2><p>Rated figures. Everything in the live panel is computed from this table.</p></div>
+    <div class="table-wrap"><table id="engTable"></table></div>
+    <div class="math" id="math"></div>
+  </section>
+
+  <section class="section" aria-labelledby="misH">
+    <div class="section-head"><h2 id="misH">Two missions</h2><p>One spacecraft design, two routes through the outer planets.</p></div>
+    <div class="mission" id="missions"></div>
+  </section>
+
+  <footer>
+    <h3>Sources</h3>
+    <ol id="sources"></ol>
+  </footer>
+</div>

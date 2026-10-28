@@ -1,0 +1,18 @@
+{
+  "name": "voyager-anatomy",
+  "version": "1.0.0",
+  "description": "Interactive 3D technical drawing of Voyager 1 and 2: the spacecraft part by part, the Golden Record, the Titan IIIE-Centaur that launched them, both Grand Tours to scale, and where they are now, live.",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.cjs",
+    "deploy": "sh scripts/deploy.sh",
+    "dsn": "node scripts/dsn-watch.mjs status.json"
+  },
+  "keywords": ["voyager", "voyager-1", "voyager-2", "golden-record", "titan-iiie", "three.js", "webgl", "space", "orbital-mechanics", "visualization"],
+  "author": "M. Sree Ganesh",
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
