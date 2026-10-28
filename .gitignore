@@ -1,0 +1,5 @@
+node_modules
+dist/artifact.html
+shots/
+.DS_Store
+*.log

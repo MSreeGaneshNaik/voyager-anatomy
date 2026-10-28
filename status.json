@@ -1,0 +1,7 @@
+{
+  "checked": "2026-10-28",
+  "source": "NASA Voyager mission status, 15 Oct 2026",
+  "V1": { "state": "operating", "since": null, "lastContact": null, "note": "" },
+  "V2": { "state": "operating", "since": null, "lastContact": null, "note": "" },
+  "instruments": {}
+}
