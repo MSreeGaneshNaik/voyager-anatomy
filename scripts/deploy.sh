@@ -7,7 +7,7 @@ cd "$(dirname "$0")/.."
 repo=$(pwd)
 node scripts/build.mjs
 site=$(mktemp -d)
-if git fetch -q origin gh-pages 2>/dev/null; then
+if git fetch -q origin +gh-pages:refs/remotes/origin/gh-pages 2>/dev/null; then
   git worktree add -q --detach "$site" origin/gh-pages
 else
   git worktree add -q --detach "$site" HEAD && (cd "$site" && git checkout -q --orphan gh-pages && git rm -rqf .)

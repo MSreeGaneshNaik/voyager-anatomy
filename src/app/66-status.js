@@ -1,12 +1,16 @@
 // ============================================================================
 // 66 · MISSION STATUS — the fail-safe for the day either probe falls silent or
-// NASA ends a mission, or switches off another instrument. The status lives in
-// this page's database (status/mission), written only by the owner or editors —
-// in practice by the scheduled check that reads NASA's Voyager mission-status
-// pages. The page reads it live; with no database (signed out, offline), it
-// shows the status built in when it was published.
-// Shape: { checked, source, V1: { state, since, lastContact, note }, V2: {…},
+// NASA ends a mission, or switches off another instrument. Two places hold it:
+//  · as a Claude artifact: this page's database (status/mission), which only the
+//    owner or editors can write, read live;
+//  · on GitHub Pages: status.json next to the page, re-read every ten minutes.
+//    The DSN watch workflow (.github/workflows/dsn-watch.yml) writes the dsn
+//    record there every half hour from NASA's DSN Now feed; state, instruments
+//    and notes are edited by hand.
+// With neither (opened from disk, offline) it shows the status built in.
+// Shape: { checked, source, V1: { state, since, lastContact, note, dsn }, V2: {…},
 //          instruments: { iLECP: ["2026-04-17", "2025-03-24"], … } }
+// dsn: { at, dish, station, rangeKm, rtltS } — the last pass a DSN dish heard the probe
 // state: "operating" | "silent" (no signal, mission not yet declared over) | "ended"
 // ============================================================================
 const MISSION = {
@@ -18,13 +22,16 @@ const STATUS_CELL = (x) => (x === "on" ? `<span class="on">On</span>` : x === "�
 const STATE_TXT = { operating: "Operating", silent: "Silent", ended: "Mission ended" };
 const isoDay = (s) => (typeof s === "string" && /^\d{4}-\d{2}-\d{2}/.test(s) ? s.slice(0, 19) : null);
 const txt = (s, n = 200) => (typeof s === "string" ? s.slice(0, n) : "");
+const num = (v) => (v != null && v !== "" && Number.isFinite(+v) && +v > 0 ? +v : null);
+// the DSN feed gives range to three significant figures, so it is shown that way
+const fmtRange = (km) => (km >= 1e9 ? `${(km / 1e9).toPrecision(3)} billion km` : `${Math.round(km).toLocaleString("en-US")} km`);
 function applyStatus(d) {
   if (d && typeof d === "object") {
     for (const k of ["V1", "V2"]) {
       const s = d[k]; if (!s || typeof s !== "object") continue;
       const dsn = s.dsn && typeof s.dsn === "object" ? s.dsn : null;
       MISSION[k] = { state: STATE_TXT[s.state] ? s.state : "operating", since: isoDay(s.since), lastContact: isoDay(s.lastContact), note: txt(s.note, 280),
-        dsn: dsn ? { at: isoDay(dsn.at), dish: txt(dsn.dish, 12), station: txt(dsn.station, 40), rangeKm: Number.isFinite(+dsn.rangeKm) ? +dsn.rangeKm : null, rtltS: Number.isFinite(+dsn.rtltS) ? +dsn.rtltS : null } : null };
+        dsn: dsn ? { at: isoDay(dsn.at), dish: txt(dsn.dish, 12), station: txt(dsn.station, 40), rangeKm: num(dsn.rangeKm), rtltS: num(dsn.rtltS) } : null };
     }
     MISSION.checked = isoDay(d.checked) || MISSION.checked; MISSION.source = txt(d.source, 160) || MISSION.source;
     const ins = d.instruments && typeof d.instruments === "object" ? d.instruments : {};
@@ -48,7 +55,7 @@ function renderStatus() {
     box.append(p);
   }
   // the last time a Deep Space Network dish heard each probe, as NASA's DSN Now feed reported it
-  const heard = ["V1", "V2"].filter((k) => MISSION[k].dsn?.at).map((k) => { const D = MISSION[k].dsn; return `${PROBES[k].name} last heard ${fmtDay(D.at)}, ${D.at.slice(11, 16)} UT by ${D.dish}${D.station ? " " + D.station : ""}${D.rangeKm ? ` at ${Math.round(D.rangeKm).toLocaleString("en-US")} km` : ""}`; });
+  const heard = ["V1", "V2"].filter((k) => MISSION[k].dsn?.at).map((k) => { const D = MISSION[k].dsn; return `${PROBES[k].name} last heard ${fmtDay(D.at)}, ${D.at.slice(11, 16)} UT by ${D.dish}${D.station ? " " + D.station : ""}${D.rangeKm ? ` at ${fmtRange(D.rangeKm)}` : ""}`; });
   if (heard.length) { const h = el("small", { class: "heard" }); h.textContent = heard.join(" · "); box.append(h); }
   // a record nobody has re-checked for weeks says so, rather than claiming to be current
   const age = MISSION.checked ? Math.floor(JD_NOW() - jdOf(MISSION.checked.slice(0, 10) + "T00:00:00Z")) : null;
@@ -72,7 +79,9 @@ async function watchStatus() {
   if (window.claude?.use) {
     try { const db = await window.claude.use("db"); if (db) { db.doc("status/mission").onSnapshot((snap) => applyStatus(snap.exists ? snap.data() : null), () => {}); return; } } catch (e) {}
   }
-  // anywhere else (GitHub Pages): status.json next to the page, re-read every ten minutes
+  // anywhere else (GitHub Pages): status.json next to the page, re-read every ten minutes;
+  // a copy opened straight from disk has nothing to fetch and keeps the published record
+  if (!/^https?:$/.test(location.protocol)) return;
   const read = async () => { try { const r = await fetch("status.json", { cache: "no-store" }); if (r.ok) applyStatus({ ...(await r.json()), via: "file" }); } catch (e) {} };
   read(); setInterval(read, 600000);
 }

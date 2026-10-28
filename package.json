@@ -6,13 +6,26 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.cjs",
+    "shot": "node scripts/shot.mjs",
     "deploy": "sh scripts/deploy.sh",
     "dsn": "node scripts/dsn-watch.mjs status.json"
   },
-  "keywords": ["voyager", "voyager-1", "voyager-2", "golden-record", "titan-iiie", "three.js", "webgl", "space", "orbital-mechanics", "visualization"],
+  "keywords": [
+    "voyager",
+    "voyager-1",
+    "voyager-2",
+    "golden-record",
+    "titan-iiie",
+    "three.js",
+    "webgl",
+    "space",
+    "orbital-mechanics",
+    "visualization"
+  ],
   "author": "M. Sree Ganesh",
   "license": "MIT",
   "devDependencies": {
-    "playwright": "^1.63.0"
+    "playwright": "^1.63.0",
+    "three": "^0.160.0"
   }
 }
