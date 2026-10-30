@@ -1,16 +1,16 @@
 {
-  "checked": "2026-10-29",
+  "checked": "2026-10-30",
   "source": "NASA Deep Space Network, DSN Now feed",
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-10-29",
+    "lastContact": "2026-10-30",
     "note": "",
     "dsn": {
-      "at": "2026-10-29T02:15Z",
-      "dish": "DSS-43",
-      "station": "Canberra",
-      "rangeKm": 25800000000,
+      "at": "2026-10-30T00:42Z",
+      "dish": "DSS-25",
+      "station": "Goldstone",
+      "rangeKm": 25900000000,
       "rtltS": null,
       "signal": "data"
     }
