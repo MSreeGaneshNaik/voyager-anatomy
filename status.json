@@ -7,9 +7,9 @@
     "lastContact": "2026-10-30",
     "note": "",
     "dsn": {
-      "at": "2026-10-30T00:42Z",
-      "dish": "DSS-25",
-      "station": "Goldstone",
+      "at": "2026-10-30T13:56Z",
+      "dish": "DSS-63",
+      "station": "Madrid",
       "rangeKm": 25900000000,
       "rtltS": null,
       "signal": "data"
@@ -21,8 +21,8 @@
     "lastContact": "2026-10-30",
     "note": "",
     "dsn": {
-      "at": "2026-10-30T06:55Z",
-      "dish": "DSS-34",
+      "at": "2026-10-30T13:56Z",
+      "dish": "DSS-43",
       "station": "Canberra",
       "rangeKm": 21600000000,
       "rtltS": null,
