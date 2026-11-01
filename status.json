@@ -1,15 +1,15 @@
 {
-  "checked": "2026-10-31",
+  "checked": "2026-11-01",
   "source": "NASA Deep Space Network, DSN Now feed",
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-10-31",
+    "lastContact": "2026-11-01",
     "note": "",
     "dsn": {
-      "at": "2026-10-31T19:29Z",
-      "dish": "DSS-63",
-      "station": "Madrid",
+      "at": "2026-11-01T02:01Z",
+      "dish": "DSS-24",
+      "station": "Goldstone",
       "rangeKm": null,
       "rtltS": null,
       "signal": "data"
