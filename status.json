@@ -7,9 +7,9 @@
     "lastContact": "2026-11-01",
     "note": "",
     "dsn": {
-      "at": "2026-11-01T20:24Z",
-      "dish": "DSS-63",
-      "station": "Madrid",
+      "at": "2026-11-01T23:48Z",
+      "dish": "DSS-25",
+      "station": "Goldstone",
       "rangeKm": null,
       "rtltS": null,
       "signal": "data"
