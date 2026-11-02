@@ -4,12 +4,12 @@
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-01",
+    "lastContact": "2026-11-02",
     "note": "",
     "dsn": {
-      "at": "2026-11-01T23:48Z",
-      "dish": "DSS-25",
-      "station": "Goldstone",
+      "at": "2026-11-02T13:46Z",
+      "dish": "DSS-63",
+      "station": "Madrid",
       "rangeKm": null,
       "rtltS": null,
       "signal": "data"
