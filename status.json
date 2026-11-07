@@ -1,17 +1,17 @@
 {
-  "checked": "2026-11-06",
+  "checked": "2026-11-07",
   "source": "NASA Deep Space Network, DSN Now feed",
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-06",
+    "lastContact": "2026-11-07",
     "note": "",
     "dsn": {
-      "at": "2026-11-06T18:17Z",
-      "dish": "DSS-63",
-      "station": "Madrid",
-      "rangeKm": null,
-      "rtltS": null,
+      "at": "2026-11-07T03:05Z",
+      "dish": "DSS-43",
+      "station": "Canberra",
+      "rangeKm": 25900000000,
+      "rtltS": 173000,
       "signal": "data"
     }
   },
