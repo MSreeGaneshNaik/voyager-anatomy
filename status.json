@@ -7,9 +7,9 @@
     "lastContact": "2026-11-07",
     "note": "",
     "dsn": {
-      "at": "2026-11-07T03:05Z",
-      "dish": "DSS-43",
-      "station": "Canberra",
+      "at": "2026-11-07T09:55Z",
+      "dish": "DSS-63",
+      "station": "Madrid",
       "rangeKm": 25900000000,
       "rtltS": 173000,
       "signal": "data"
