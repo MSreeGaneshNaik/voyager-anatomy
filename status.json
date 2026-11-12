@@ -4,10 +4,10 @@
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-10",
+    "lastContact": "2026-11-12",
     "note": "",
     "dsn": {
-      "at": "2026-11-10T18:33Z",
+      "at": "2026-11-12T10:08Z",
       "dish": "DSS-63",
       "station": "Madrid",
       "rangeKm": 25900000000,
@@ -18,10 +18,10 @@
   "V2": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-11",
+    "lastContact": "2026-11-12",
     "note": "",
     "dsn": {
-      "at": "2026-11-11T13:55Z",
+      "at": "2026-11-12T10:08Z",
       "dish": "DSS-43",
       "station": "Canberra",
       "rangeKm": 21700000000,
