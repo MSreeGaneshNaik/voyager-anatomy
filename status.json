@@ -4,12 +4,12 @@
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-20",
+    "lastContact": "2026-11-21",
     "note": "",
     "dsn": {
-      "at": "2026-11-20T02:30Z",
-      "dish": "DSS-43",
-      "station": "Canberra",
+      "at": "2026-11-21T16:20Z",
+      "dish": "DSS-65",
+      "station": "Madrid",
       "rangeKm": 25900000000,
       "rtltS": 173000,
       "signal": "data"
