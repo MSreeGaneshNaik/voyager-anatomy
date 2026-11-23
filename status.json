@@ -1,5 +1,5 @@
 {
-  "checked": "2026-11-22",
+  "checked": "2026-11-23",
   "source": "NASA Deep Space Network, DSN Now feed",
   "V1": {
     "state": "operating",
@@ -18,10 +18,10 @@
   "V2": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-21",
+    "lastContact": "2026-11-23",
     "note": "",
     "dsn": {
-      "at": "2026-11-21T00:42Z",
+      "at": "2026-11-23T03:37Z",
       "dish": "DSS-43",
       "station": "Canberra",
       "rangeKm": 21700000000,
