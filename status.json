@@ -18,10 +18,10 @@
   "V2": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-23",
+    "lastContact": "2026-11-24",
     "note": "",
     "dsn": {
-      "at": "2026-11-23T14:16Z",
+      "at": "2026-11-24T12:15Z",
       "dish": "DSS-43",
       "station": "Canberra",
       "rangeKm": 21700000000,
