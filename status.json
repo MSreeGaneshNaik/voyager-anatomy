@@ -4,10 +4,10 @@
   "V1": {
     "state": "operating",
     "since": null,
-    "lastContact": "2026-11-23",
+    "lastContact": "2026-11-26",
     "note": "",
     "dsn": {
-      "at": "2026-11-23T14:16Z",
+      "at": "2026-11-26T18:20Z",
       "dish": "DSS-63",
       "station": "Madrid",
       "rangeKm": 25900000000,
